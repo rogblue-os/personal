@@ -50,9 +50,9 @@ RUN rpm-ostree install \
 
 RUN sudo rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:lukenukem:asus-kernel kernel kernel-core kernel-modules kernel-modules-extra
 
-RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.0.11-307.rog.fc37.x86_64 --reproducible \
+RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.0.11-308.rog.fc37.x86_64 --reproducible \
     -v --add ostree -f /tmp/initramfs2.img
-RUN mv /tmp/initramfs2.img /lib/modules/6.0.11-307.rog.fc37.x86_64/initramfs.img
+RUN mv /tmp/initramfs2.img /lib/modules/6.0.11-308.rog.fc37.x86_64/initramfs.img
 
 RUN	systemctl enable supergfxd && \
 	systemctl unmask dconf-update.service && \
