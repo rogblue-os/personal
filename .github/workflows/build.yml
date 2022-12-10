@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '15 0 * * *'  # every day at midnight + 15m
 env:
-    IMAGE_NAME: ubuntu
+    IMAGE_NAME: personal
     IMAGE_TAGS: latest ${{ github.sha }}
     IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
     REGISTRY_USER: ${{ github.actor }}
