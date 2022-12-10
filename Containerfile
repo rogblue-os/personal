@@ -49,6 +49,10 @@ RUN rpm-ostree install \
     gnome-tweaks 
     
 RUN	systemctl enable supergfxd && \
+	systemctl unmask dconf-update.service && \
+    systemctl enable dconf-update.service && \
+    fc-cache -f /usr/share/fonts/ubuntu && \
+    fc-cache -f /usr/share/fonts/meslo && \
     rm -rf /var/lib/unbound && \
     rpm-ostree cleanup -m  && \
     ostree container commit
