@@ -1,0 +1,68 @@
+
+[org/gnome/shell] 
+favorite-apps = ['org.gnome.Settings.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.TextEditor.desktop', 'com.bitwarden.desktop.desktop', 'org.mozilla.Thunderbird.desktop', 'org.mozilla.firefox.desktop', 'com.discordapp.Discord.desktop', 'org.telegram.desktop.desktop', 'io.github.mimbrero.WhatsAppDesktop.desktop', 'im.riot.Riot.desktop', 'com.slack.Slack.desktop', 'org.filezillaproject.Filezilla.desktop', 'org.onlyoffice.desktopeditors.desktop', 'sh.cider.Cider.desktop', 'io.github.shiftey.Desktop.desktop', 'org.gimp.GIMP.desktop']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com']
+
+
+# dconf path
+[org/gnome/desktop/background]
+picture-uri='file:///usr/share/backgrounds/hal_sorry.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/hal_sorry.jpg'
+picture-options='zoom'
+primary-color='000000'
+secondary-color='FFFFFF'
+
+[org/gnome/desktop/interface]
+enable-hot-corners="false"
+icon-theme="Papirus-Dark"
+gtk-theme="adw-gtk3-dark"
+font-antialiasing="rgba"
+font-name="MesloLGS NF 12"
+document-font-name="MesloLGS NF 12"
+monospace-font-name="Ubuntu Mono 18"
+color-scheme="prefer-dark"
+
+[org/gnome/desktop/wm/preferences]
+button-layout=":minimize,maximize,close"
+num-workspaces="4"
+title-bar-font="MesloLGS NF Bold 12"
+
+[org/gnome/shell/extensions/dash-to-dock]
+dock-fixed="true"
+dock-position="BOTTOM"
+extend-height="true"
+force-straight-corner="false"
+custom-theme-shrink="true"
+disable-overview-on-startup="true"
+autohide="false"
+dash-max-icon-size="32"
+background-opacity="0.0"
+intellihide="false"
+show-mounts="false"
+show-show-apps-button="false"
+show-trash="false"
+show-window-preview="true"
+transparency-mode="FIXED"
+
+[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+visible-name="default"
+default-size-columns="120"
+default-size-rows="35"
+audible-bell="false"
+
+[org/gnome/desktop/peripherals/touchpad]
+natural-scroll="false"
+tap-to-click="true"
+
+[org/gnome/software/allow-updates]
+allow-updates="false"
+download-updates="false"
+download-updates-notify="false"
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>t'
+command='gnome-terminal'
+name='gnome-terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
