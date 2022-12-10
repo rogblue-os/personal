@@ -19,7 +19,7 @@ gtk-theme="adw-gtk3-dark"
 font-antialiasing="rgba"
 font-name="MesloLGS NF 12"
 document-font-name="MesloLGS NF 12"
-monospace-font-name="Ubuntu Mono 18"
+monospace-font-name="MesloLGS NF 18"
 color-scheme="prefer-dark"
 show-battery-percentage="true"
 
