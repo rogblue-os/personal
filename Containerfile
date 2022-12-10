@@ -1,6 +1,9 @@
 FROM ghcr.io/rogblue-os/base:latest
 # See https://pagure.io/releng/issue/11047 for final location
 
+COPY etc /etc
+COPY usr /usr
+
 # Add vscode repo
 RUN echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/code.repo
 
