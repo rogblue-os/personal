@@ -21,6 +21,7 @@ font-name="MesloLGS NF 12"
 document-font-name="MesloLGS NF 12"
 monospace-font-name="Ubuntu Mono 18"
 color-scheme="prefer-dark"
+show-battery-percentage="true"
 
 [org/gnome/desktop/wm/preferences]
 button-layout=":minimize,maximize,close"
