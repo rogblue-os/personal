@@ -48,6 +48,7 @@ RUN rpm-ostree install \
     # gnome-tweaks
     gnome-tweaks 
 
+RUN rpm-ostree cliwrap install-to-root /
 RUN sudo rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:lukenukem:asus-kernel kernel kernel-core kernel-modules kernel-modules-extra
 
 RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.0.11-308.rog.fc37.x86_64 --reproducible \
