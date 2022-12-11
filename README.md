@@ -3,7 +3,7 @@
 
 ## Usage
 
-- Install Fedora Silverblue 38
+- Install Fedora Silverblue 37
 - Rebase using this image:
 ```
 sudo rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/rogblue-os/personal:latest
