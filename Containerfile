@@ -4,6 +4,26 @@ FROM ghcr.io/rogblue-os/base:latest
 COPY etc /etc
 COPY usr /usr
 
+# Kernel 6.1
+RUN cp kernel-vanilla.repo /etc/yum.repos.d/
+RUN rpm-ostree cliwrap install-to-root /
+RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-mainline kernel kernel-core kernel-modules kernel-modules-extra
+
+#RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.1.0-0.rc8.20221209git0d1409e4ff08.62.vanilla.1.fc37.x86_64 --reproducible \
+#    -v --add ostree -f /tmp/initramfs2.img
+#RUN mv /tmp/initramfs2.img /lib/modules/6.1.0-0.rc8.20221209git0d1409e4ff08.62.vanilla.1.fc37.x86_64/initramfs.img
+
+# Asus-Linux kernel
+# Add Asus-linux copr repo
+#RUN cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/lukenukem/asus-kernel/repo/fedora-37/lukenukem-asus-kernel-fedora-37.repo
+#RUN rpm-ostree cliwrap install-to-root /
+#RUN sudo rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:lukenukem:asus-kernel kernel kernel-core kernel-modules kernel-modules-extra
+
+# Temp fix to make the kernel build bootable
+#RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.0.11-308.rog.fc37.x86_64 --reproducible \
+#    -v --add ostree -f /tmp/initramfs2.img
+#RUN mv /tmp/initramfs2.img /lib/modules/6.0.11-308.rog.fc37.x86_64/initramfs.img
+
 # Add vscode repo
 RUN echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/code.repo
 
@@ -44,26 +64,6 @@ RUN rpm-ostree install \
     papirus-icon-theme \
     # gnome-tweaks
     gnome-tweaks 
-
-# Asus-Linux kernel
-# Add Asus-linux copr repo
-#RUN cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/lukenukem/asus-kernel/repo/fedora-37/lukenukem-asus-kernel-fedora-37.repo
-#RUN rpm-ostree cliwrap install-to-root /
-#RUN sudo rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:lukenukem:asus-kernel kernel kernel-core kernel-modules kernel-modules-extra
-
-# Temp fix to make the kernel build bootable
-#RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.0.11-308.rog.fc37.x86_64 --reproducible \
-    -v --add ostree -f /tmp/initramfs2.img
-#RUN mv /tmp/initramfs2.img /lib/modules/6.0.11-308.rog.fc37.x86_64/initramfs.img
-
-# Kernel 6.1
-RUN cp kernel-vanilla.repo /etc/yum.repos.d/
-RUN rpm-ostree cliwrap install-to-root /
-RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-mainline kernel kernel-core kernel-modules kernel-modules-extra
-
-#RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.1.0-0.rc8.20221209git0d1409e4ff08.62.vanilla.1.fc37.x86_64 --reproducible \
- #   -v --add ostree -f /tmp/initramfs2.img
-#RUN mv /tmp/initramfs2.img /lib/modules/6.1.0-0.rc8.20221209git0d1409e4ff08.62.vanilla.1.fc37.x86_64/initramfs.img
 
 # Final housekeeping
 RUN	systemctl enable supergfxd && \
