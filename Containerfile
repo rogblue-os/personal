@@ -5,7 +5,7 @@ COPY etc /etc
 COPY usr /usr
 
 # Kernel 6.1
-RUN cp kernel-vanilla.repo /etc/yum.repos.d/
+#RUN cp kernel-vanilla.repo /etc/yum.repos.d/
 RUN rpm-ostree cliwrap install-to-root /
 RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-mainline kernel kernel-core kernel-modules kernel-modules-extra
 
