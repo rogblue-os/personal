@@ -11,10 +11,6 @@ RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-mainli
 #RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.1.0-0.rc8.20221209git0d1409e4ff08.62.vanilla.1.fc37.x86_64 --reproducible -v --add ostree -f /tmp/initramfs2.img
 #RUN mv /tmp/initramfs2.img /lib/modules/6.1.0-0.rc8.20221209git0d1409e4ff08.62.vanilla.1.fc37.x86_64/initramfs.img
 
-### Linux firmware
-RUN cd /etc/yum.repos.d && curl -LO https://copr.fedorainfracloud.org/coprs/xxmitsu/kernel-fedora/repo/fedora-37/xxmitsu-kernel-fedora-fedora-37.repo
-RUN rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:xxmitsu:kernel-fedora linux-firmware
-
 # Asus-Linux kernel
 # Add Asus-linux copr repo
 #RUN cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/lukenukem/asus-kernel/repo/fedora-37/lukenukem-asus-kernel-fedora-37.repo
