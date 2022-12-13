@@ -1,3 +1,5 @@
+[![build-rogblue](https://github.com/rogblue-os/personal/actions/workflows/build.yml/badge.svg)](https://github.com/rogblue-os/personal/actions/workflows/build.yml)
+
 # personal
 
 
