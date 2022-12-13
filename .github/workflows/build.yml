@@ -17,7 +17,7 @@ env:
 
 jobs:
   push-ghcr:
-    name: Build and push image
+    name: Build and push rog-personal image
     runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v2
 
       # Build image using Buildah action
-      - name: Build Image
+      - name: Build rog-personal Image
         id: build_image
         uses: redhat-actions/buildah-build@v2
         with:
