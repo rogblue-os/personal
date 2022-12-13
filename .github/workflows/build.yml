@@ -9,7 +9,7 @@ on:
   schedule:
     - cron: '15 0 * * *'  # every day at midnight
 env:
-    IMAGE_NAME: rog-personal
+    IMAGE_NAME: personal
     IMAGE_TAGS: latest ${{ github.sha }}
     IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
     REGISTRY_USER: ${{ github.actor }}
@@ -17,7 +17,7 @@ env:
 
 jobs:
   push-ghcr:
-    name: Build and push rog-personal image
+    name: Build and push image
     runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v2
 
       # Build image using Buildah action
-      - name: Build rog-personal Image
+      - name: Build Image
         id: build_image
         uses: redhat-actions/buildah-build@v2
         with:
