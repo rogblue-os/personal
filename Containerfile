@@ -1,4 +1,4 @@
-FROM ghcr.io/rogblue-os/rog-base:latest
+FROM ghcr.io/rogblue-os/base:latest
 # See https://pagure.io/releng/issue/11047 for final location
 
 COPY etc /etc
