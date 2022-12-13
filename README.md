@@ -8,7 +8,7 @@
 - Install Fedora Silverblue 37
 - Rebase using this image:
 ```
-sudo rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/rogblue-os/rog-personal:latest
+sudo rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/rogblue-os/personal:latest
 ```
 ## What is this
 This is my personal image, which I decided to share.
