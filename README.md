@@ -18,7 +18,7 @@ This includes pretty much the base image and then my modifications on top of tha
 - Papirus icon theme
 - adw-gtk3 theme, dark theme set as default after install
 - asusctl, supergfxctl and asusctl-rog-gui from [asus-linux.org](https://www.asus-linux.org) project
-- Stock kernel replaced with kernel 6.1rc
+- Stock kernel replaced with kernel 6.1 (final) [Kernel Vanilla Repo](https://fedoraproject.org/wiki/Kernel_Vanilla_Repositories)
 - some settings which I cant remember all :D
 
 ## Thanks
