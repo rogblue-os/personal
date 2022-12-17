@@ -54,7 +54,7 @@ RUN rpm-ostree install \
     # adw-gtk3 theme
     adw-gtk3 \
     # appindicator and dash to dock extensions
-    gnome-shell-extension-appindicator gnome-shell-extension-dash-to-dock \
+    gnome-shell-extension-appindicator gnome-shell-extension-dash-to-dock openssl nautilus-gsconnect\
     # distrobox
     distrobox \
     # asusctl, supergfxctl and asusctl-rog-gui
