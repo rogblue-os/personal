@@ -11,6 +11,9 @@ RUN rpm-ostree override replace https://kojipkgs.fedoraproject.org//packages/rpm
 RUN rpm-ostree cliwrap install-to-root /
 RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-mainline kernel kernel-core kernel-modules kernel-modules-extra
 
+# Install ProtonVPN repo package
+RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packages/protonvpn-stable-release-1.0.1-1.noarch.rpm
+
 #RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.1.0-0.rc8.20221209git0d1409e4ff08.62.vanilla.1.fc37.x86_64 --reproducible -v --add ostree -f /tmp/initramfs2.img
 #RUN mv /tmp/initramfs2.img /lib/modules/6.1.0-0.rc8.20221209git0d1409e4ff08.62.vanilla.1.fc37.x86_64/initramfs.img
 
@@ -63,8 +66,12 @@ RUN rpm-ostree install \
     micro \
     # icon theme
     papirus-icon-theme \
+    # protonvpn stuff
+    protonvpn python-pip \
     # gnome-tweaks
     gnome-tweaks 
+
+RUN pip3 install --user 'dnspython>=1.16.0'
 
 # Final housekeeping
 RUN	systemctl enable supergfxd && \
