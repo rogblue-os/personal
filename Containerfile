@@ -4,9 +4,6 @@ FROM ghcr.io/rogblue-os/base:latest
 COPY etc /etc
 COPY usr /usr
 
-# fixed rpm-ostree
-RUN rpm-ostree override replace https://kojipkgs.fedoraproject.org//packages/rpm-ostree/2022.18/2.fc37/x86_64/rpm-ostree-{libs-,}2022.18-2.fc37.x86_64.rpm
-
 ### Kernel 6.1
 RUN rpm-ostree cliwrap install-to-root /
 RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-mainline kernel kernel-core kernel-modules kernel-modules-extra
@@ -71,7 +68,6 @@ RUN rpm-ostree install \
     # gnome-tweaks
     gnome-tweaks 
 
-RUN pip3 install --user 'dnspython>=1.16.0'
 
 # Final housekeeping
 RUN	systemctl enable supergfxd && \

@@ -21,6 +21,7 @@ This includes pretty much the base image and then my modifications on top of tha
 - adw-gtk3 theme, dark theme set as default after install
 - asusctl, supergfxctl and asusctl-rog-gui from [asus-linux.org](https://www.asus-linux.org) project
 - Stock kernel replaced with kernel 6.1 (final) from [Kernel Vanilla Repo](https://fedoraproject.org/wiki/Kernel_Vanilla_Repositories)
+- Added ProtonVPN client
 - some settings which I cant remember all :D
 
 ## Thanks
