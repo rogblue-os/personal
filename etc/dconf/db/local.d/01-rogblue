@@ -54,7 +54,7 @@ audible-bell="false"
 natural-scroll="false"
 tap-to-click="true"
 
-[org/gnome/software/allow-updates]
+[org/gnome/software]
 allow-updates="false"
 download-updates="false"
 download-updates-notify="false"
