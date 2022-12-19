@@ -24,7 +24,7 @@ jobs:
     steps: 
       # Checkout push-to-registry action github repository
       - name: Checkout Push to Registry action
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Build image using Buildah action
       - name: Build Image
@@ -36,6 +36,7 @@ jobs:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ env.IMAGE_TAGS }}
           oci: true
+          layers: false
 
       # Workaround bug where capital letters in your GitHub user name make it impossible to push to GHCR.
       # https://github.com/macbre/push-to-ghcr/issues/12
