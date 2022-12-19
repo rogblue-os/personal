@@ -79,5 +79,4 @@ RUN	systemctl enable supergfxd && \
     fc-cache -f /usr/share/fonts/ubuntu && \
     fc-cache -f /usr/share/fonts/meslo && \
     rm -rf /var/lib/unbound && \
-    rpm-ostree cleanup -m  && \
     ostree container commit
