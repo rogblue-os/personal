@@ -23,11 +23,6 @@ RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packa
 #RUN rpm-ostree cliwrap install-to-root /
 #RUN sudo rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:lukenukem:asus-kernel kernel kernel-core kernel-modules kernel-modules-extra
 
-# Temp fix to make the kernel build bootable
-#RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.0.11-308.rog.fc37.x86_64 --reproducible \
-#    -v --add ostree -f /tmp/initramfs2.img
-#RUN mv /tmp/initramfs2.img /lib/modules/6.0.11-308.rog.fc37.x86_64/initramfs.img
-
 # Add vscode repo
 RUN echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/code.repo
 
