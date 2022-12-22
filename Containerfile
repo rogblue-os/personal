@@ -24,6 +24,9 @@ RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packa
 #RUN rpm-ostree cliwrap install-to-root /
 #RUN sudo rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:lukenukem:asus-kernel kernel kernel-core kernel-modules kernel-modules-extra
 
+#remove toolbox
+RUN rpm-ostree override remove toolbox
+
 # Add vscode repo
 RUN echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/code.repo
 
