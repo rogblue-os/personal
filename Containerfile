@@ -10,7 +10,7 @@ RUN rpm-ostree cliwrap install-to-root /
 #	https://repos.fedorapeople.org/repos/thl/kernel-vanilla-mainline-wo-mergew/fedora-37/x86_64/kernel-core-6.1.0-65.fc38.x86_64.rpm \
 #	https://repos.fedorapeople.org/repos/thl/kernel-vanilla-mainline-wo-mergew/fedora-37/x86_64/kernel-modules-6.1.0-65.fc38.x86_64.rpm \
 #	https://repos.fedorapeople.org/repos/thl/kernel-vanilla-mainline-wo-mergew/fedora-37/x86_64/kernel-modules-extra-6.1.0-65.fc38.x86_64.rpm
-RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-mainline-wo-mergew kernel kernel-core kernel-modules kernel-modules-extra
+RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-stable kernel kernel-core kernel-modules kernel-modules-extra
 
 # Install ProtonVPN repo package
 RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packages/protonvpn-stable-release-1.0.1-1.noarch.rpm

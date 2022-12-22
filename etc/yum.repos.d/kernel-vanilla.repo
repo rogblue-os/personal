@@ -10,7 +10,7 @@ metadata_expire=2h
 [kernel-vanilla-mainline-wo-mergew]
 name=Linux vanilla kernels from mainline series, excluding kernels from the merge window 
 baseurl=http://repos.fedorapeople.org/repos/thl/kernel-vanilla-mainline-wo-mergew/fedora-$releasever/$basearch/
-enabled=1
+enabled=0
 skip_if_unavailable=1
 gpgcheck=1
 gpgkey=https://repos.fedorapeople.org/repos/thl/RPM-GPG-KEY-knurd-kernel-vanilla
@@ -19,7 +19,7 @@ metadata_expire=2h
 [kernel-vanilla-stable]
 name=Linux vanilla kernels from stable series
 baseurl=http://repos.fedorapeople.org/repos/thl/kernel-vanilla-stable/fedora-$releasever/$basearch/
-enabled=0
+enabled=1
 skip_if_unavailable=1
 gpgcheck=1
 gpgkey=https://repos.fedorapeople.org/repos/thl/RPM-GPG-KEY-knurd-kernel-vanilla
