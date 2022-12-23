@@ -56,7 +56,7 @@ RUN rpm-ostree install \
     # adw-gtk3 theme
     adw-gtk3 \
     # appindicator and dash to dock extensions
-    gnome-shell-extension-appindicator gnome-shell-extension-dash-to-dock openssl nautilus-gsconnect\
+    gnome-shell-extension-appindicator gnome-shell-extension-dash-to-dock openssl nautilus-gsconnect gnome-shell-extension-gsconnect \ 
     # distrobox
     distrobox \
     # asusctl, supergfxctl and asusctl-rog-gui
@@ -67,6 +67,8 @@ RUN rpm-ostree install \
     papirus-icon-theme \
     # protonvpn stuff
     protonvpn python-pip \
+    # Blackbox terminal
+    blackbox-terminal \
     # gnome-tweaks
     gnome-tweaks 
 
