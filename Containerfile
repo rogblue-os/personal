@@ -18,14 +18,6 @@ COPY usr /usr
     # Add ADW-GTK3 theme copr
     RUN sudo wget -P /etc/yum.repos.d/ https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-37/nickavem-adw-gtk3-fedora-37.repo
     
-### Kernel 6.1
-RUN rpm-ostree cliwrap install-to-root /
-
-RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-stable kernel kernel-core kernel-modules kernel-modules-extra
-
-# Install gnome-vrr patches
-RUN rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:kylegospo:gnome-vrr mutter gnome-control-center gnome-control-center-filesystem
-
 # Install apps
 RUN rpm-ostree install \
 	# virt-manager and needed stuff
@@ -54,9 +46,17 @@ RUN rpm-ostree install \
     # Blackbox terminal
     blackbox-terminal \
     # gnome-tweaks
-    gnome-tweaks \
-    # 1password
-    1password
+    gnome-tweaks 
+
+RUN rpm-ostree install 1password
+
+### Kernel 6.1
+RUN rpm-ostree cliwrap install-to-root /
+
+RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-stable kernel kernel-core kernel-modules kernel-modules-extra
+
+# Install gnome-vrr patches
+RUN rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:kylegospo:gnome-vrr mutter gnome-control-center gnome-control-center-filesystem
 
 # remove toolbox
 RUN rpm-ostree override remove toolbox
