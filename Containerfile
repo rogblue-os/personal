@@ -4,6 +4,23 @@ FROM ghcr.io/rogblue-os/base:latest
 COPY etc /etc
 COPY usr /usr
 
+### Add all needed repos
+    # 1Password
+    RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packages/protonvpn-stable-release-1.0.1-1.noarch.rpm
+    # vscode
+    RUN echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/code.repo
+    # Blackbox-terminal repo
+    RUN wget https://copr.fedorainfracloud.org/coprs/lyessaadi/blackbox/repo/fedora-37/lyessaadi-blackbox-fedora-37.repo -O /etc/yum.repos.d/lyessaadi-blackbox.repo
+    # Add Asus-linux copr repo
+    RUN cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/lukenukem/asus-linux/repo/fedora-37/lukenukem-asus-linux-fedora-37.repo
+    # Add Gnome-VRR repo
+    RUN sudo wget https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-$(rpm -E %fedora)/kylegospo-gnome-vrr-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
+    # Add ADW-GTK3 theme copr
+    RUN sudo wget -P /etc/yum.repos.d/ https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-37/nickavem-adw-gtk3-fedora-37.repo
+    # Add 1Password repo
+RUN echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=0\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo
+
+
 ### Kernel 6.1
 RUN rpm-ostree cliwrap install-to-root /
 #RUN rpm-ostree override replace https://repos.fedorapeople.org/repos/thl/kernel-vanilla-mainline-wo-mergew/fedora-37/x86_64/kernel-6.1.0-65.vanilla.1.fc37.x86_64.rpm \
@@ -11,31 +28,6 @@ RUN rpm-ostree cliwrap install-to-root /
 #	https://repos.fedorapeople.org/repos/thl/kernel-vanilla-mainline-wo-mergew/fedora-37/x86_64/kernel-modules-6.1.0-65.fc38.x86_64.rpm \
 #	https://repos.fedorapeople.org/repos/thl/kernel-vanilla-mainline-wo-mergew/fedora-37/x86_64/kernel-modules-extra-6.1.0-65.fc38.x86_64.rpm
 RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-stable kernel kernel-core kernel-modules kernel-modules-extra
-
-# Install ProtonVPN repo package
-RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packages/protonvpn-stable-release-1.0.1-1.noarch.rpm
-
-#remove toolbox
-RUN rpm-ostree override remove toolbox
-
-# Add vscode repo
-RUN echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/code.repo
-
-# Add 1Password repo
-RUN echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo
-
-
-# Blackbox-terminal repo
-RUN wget https://copr.fedorainfracloud.org/coprs/lyessaadi/blackbox/repo/fedora-37/lyessaadi-blackbox-fedora-37.repo -O /etc/yum.repos.d/lyessaadi-blackbox.repo
-
-# Add Asus-linux copr repo
-RUN cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/lukenukem/asus-linux/repo/fedora-37/lukenukem-asus-linux-fedora-37.repo
-
-# Add Gnome-VRR repo
-RUN sudo wget https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-$(rpm -E %fedora)/kylegospo-gnome-vrr-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
-
-# Add ADW-GTK3 theme copr
-RUN sudo wget -P /etc/yum.repos.d/ https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-37/nickavem-adw-gtk3-fedora-37.repo
 
 # Install gnome-vrr patches
 RUN rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:kylegospo:gnome-vrr mutter gnome-control-center gnome-control-center-filesystem
@@ -72,7 +64,8 @@ RUN rpm-ostree install \
     # gnome-tweaks
     gnome-tweaks 
 
-
+# remove toolbox
+RUN rpm-ostree override remove toolbox
 # Final housekeeping
 RUN	systemctl enable supergfxd && \
 	systemctl unmask dconf-update.service && \
