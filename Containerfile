@@ -58,8 +58,9 @@ RUN rpm-ostree install \
     blackbox-terminal \
     # gnome-tweaks
     gnome-tweaks
-    # 1Password
-    https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
+    
+# Install latest 1Password
+RUN rpm-ostree install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
 
 # remove toolbox
 RUN rpm-ostree override remove toolbox
