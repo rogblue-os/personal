@@ -17,6 +17,8 @@ COPY usr /usr
     RUN sudo wget https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-$(rpm -E %fedora)/kylegospo-gnome-vrr-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
     # Add ADW-GTK3 theme copr
     RUN sudo wget -P /etc/yum.repos.d/ https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-37/nickavem-adw-gtk3-fedora-37.repo
+
+  RUN rpm-ostree install 1password
     
 # Install apps
 RUN rpm-ostree install \
@@ -46,9 +48,7 @@ RUN rpm-ostree install \
     # Blackbox terminal
     blackbox-terminal \
     # gnome-tweaks
-    gnome-tweaks 
-
-RUN rpm-ostree install 1password
+    gnome-tweaks
 
 ### Kernel 6.1
 RUN rpm-ostree cliwrap install-to-root /
