@@ -3,6 +3,8 @@ name=Linux vanilla kernels from stable series
 baseurl=http://repos.fedorapeople.org/repos/thl/kernel-vanilla-stable/fedora-$releasever/$basearch/
 enabled=1
 skip_if_unavailable=1
+gpgcheck=0
+repo_gpgcheck=0
 metadata_expire=6h
 
 [kernel-vanilla-stable-source]
@@ -11,3 +13,4 @@ baseurl=http://repos.fedorapeople.org/repos/thl/kernel-vanilla-stable/fedora-$re
 enabled=0
 skip_if_unavailable=1
 gpgcheck=0
+repo_gpgcheck=0
