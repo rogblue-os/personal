@@ -3,7 +3,7 @@
 # personal
 
 
-## Usage
+## Howto use
 
 - Install Fedora Silverblue 37
 - Rebase using this image:
