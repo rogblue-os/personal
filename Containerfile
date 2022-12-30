@@ -5,7 +5,7 @@ COPY etc /etc
 COPY usr /usr
 
 # Install 1password
-RUN sudo rpm-ostree install 1password
+RUN rpm-ostree install 1password
 
 ### Add all needed repos
     # ProtonVPN
