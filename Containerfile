@@ -17,9 +17,6 @@ COPY usr /usr
     RUN sudo wget https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-$(rpm -E %fedora)/kylegospo-gnome-vrr-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
     # Add ADW-GTK3 theme copr
     RUN sudo wget -P /etc/yum.repos.d/ https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-37/nickavem-adw-gtk3-fedora-37.repo
-    # Add 1Password repo
-RUN echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=0\nrepo_gpgcheck=0\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo
-
 
 ### Kernel 6.1
 RUN rpm-ostree cliwrap install-to-root /
@@ -62,7 +59,9 @@ RUN rpm-ostree install \
     # 1Password
     1password \
     # gnome-tweaks
-    gnome-tweaks 
+    gnome-tweaks
+    # 1Password
+    https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
 
 # remove toolbox
 RUN rpm-ostree override remove toolbox
