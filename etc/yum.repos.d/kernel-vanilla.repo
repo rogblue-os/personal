@@ -21,8 +21,6 @@ name=Linux vanilla kernels from stable series
 baseurl=http://repos.fedorapeople.org/repos/thl/kernel-vanilla-stable/fedora-$releasever/$basearch/
 enabled=1
 skip_if_unavailable=1
-gpgcheck=1
-gpgkey=https://repos.fedorapeople.org/repos/thl/RPM-GPG-KEY-knurd-kernel-vanilla
 metadata_expire=6h
 
 [kernel-vanilla-stable-rc]
