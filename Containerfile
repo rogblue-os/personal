@@ -5,7 +5,7 @@ COPY etc /etc
 COPY usr /usr
 
 ### Add all needed repos
-    # 1Password
+    # ProtonVPN
     RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packages/protonvpn-stable-release-1.0.1-1.noarch.rpm
     # vscode
     RUN echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/code.repo
@@ -18,8 +18,6 @@ COPY usr /usr
     # Add ADW-GTK3 theme copr
     RUN sudo wget -P /etc/yum.repos.d/ https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-37/nickavem-adw-gtk3-fedora-37.repo
 
-  RUN rpm-ostree install 1password
-    
 # Install apps
 RUN rpm-ostree install \
 	# virt-manager and needed stuff
@@ -60,6 +58,7 @@ RUN rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfra
 
 # remove toolbox
 RUN rpm-ostree override remove toolbox
+
 # Final housekeeping
 RUN	systemctl enable supergfxd && \
 	systemctl unmask dconf-update.service && \
