@@ -48,6 +48,9 @@ RUN rpm-ostree install \
     # gnome-tweaks
     gnome-tweaks
 
+
+RUN sudo rpm-ostree install 1password
+
 ### Kernel 6.1
 RUN rpm-ostree cliwrap install-to-root /
 
