@@ -15,20 +15,15 @@ RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-stable
 # Install ProtonVPN repo package
 RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packages/protonvpn-stable-release-1.0.1-1.noarch.rpm
 
-#RUN /usr/libexec/rpm-ostree/wrapped/dracut --tmpdir /tmp/ --no-hostonly --kver 6.1.0-0.rc8.20221209git0d1409e4ff08.62.vanilla.1.fc37.x86_64 --reproducible -v --add ostree -f /tmp/initramfs2.img
-#RUN mv /tmp/initramfs2.img /lib/modules/6.1.0-0.rc8.20221209git0d1409e4ff08.62.vanilla.1.fc37.x86_64/initramfs.img
-
-# Asus-Linux kernel
-# Add Asus-linux copr repo
-#RUN cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/lukenukem/asus-kernel/repo/fedora-37/lukenukem-asus-kernel-fedora-37.repo
-#RUN rpm-ostree cliwrap install-to-root /
-#RUN sudo rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:lukenukem:asus-kernel kernel kernel-core kernel-modules kernel-modules-extra
-
 #remove toolbox
 RUN rpm-ostree override remove toolbox
 
 # Add vscode repo
 RUN echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/code.repo
+
+# Add 1Password repo
+RUN echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc" > /etc/yum.repos.d/1password.repo
+
 
 # Blackbox-terminal repo
 RUN wget https://copr.fedorainfracloud.org/coprs/lyessaadi/blackbox/repo/fedora-37/lyessaadi-blackbox-fedora-37.repo -O /etc/yum.repos.d/lyessaadi-blackbox.repo
@@ -72,6 +67,8 @@ RUN rpm-ostree install \
     protonvpn python-pip \
     # Blackbox terminal
     blackbox-terminal \
+    # 1Password
+    1password \
     # gnome-tweaks
     gnome-tweaks 
 
