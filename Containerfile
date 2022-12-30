@@ -56,8 +56,6 @@ RUN rpm-ostree install \
     protonvpn python-pip \
     # Blackbox terminal
     blackbox-terminal \
-    # 1Password
-    1password \
     # gnome-tweaks
     gnome-tweaks
     # 1Password
