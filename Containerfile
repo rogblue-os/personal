@@ -4,6 +4,9 @@ FROM ghcr.io/rogblue-os/base:latest
 COPY etc /etc
 COPY usr /usr
 
+# 1Password repo key
+RUN wget https://downloads.1password.com/linux/keys/1password.asc -O /etc/pki/rpm-gpg/1password.asc
+
 ### Add all needed repos
     # 1Password
     RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packages/protonvpn-stable-release-1.0.1-1.noarch.rpm
@@ -17,6 +20,8 @@ COPY usr /usr
     RUN sudo wget https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-$(rpm -E %fedora)/kylegospo-gnome-vrr-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
     # Add ADW-GTK3 theme copr
     RUN sudo wget -P /etc/yum.repos.d/ https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-37/nickavem-adw-gtk3-fedora-37.repo
+    # 1Password
+    RUN echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo
 
 ### Kernel 6.1
 RUN rpm-ostree cliwrap install-to-root /
@@ -53,6 +58,8 @@ RUN rpm-ostree install \
     protonvpn python-pip \
     # Blackbox terminal
     blackbox-terminal \
+    # 1password 
+    1password \
     # gnome-tweaks
     gnome-tweaks
     
