@@ -4,6 +4,9 @@ FROM ghcr.io/rogblue-os/base:latest
 COPY etc /etc
 COPY usr /usr
 
+# Install 1password
+RUN sudo rpm-ostree install 1password
+
 ### Add all needed repos
     # ProtonVPN
     RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packages/protonvpn-stable-release-1.0.1-1.noarch.rpm
@@ -48,8 +51,6 @@ RUN rpm-ostree install \
     # gnome-tweaks
     gnome-tweaks
 
-
-RUN sudo rpm-ostree install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
 ### Kernel 6.1
 RUN rpm-ostree cliwrap install-to-root /
 
