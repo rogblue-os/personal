@@ -54,7 +54,9 @@ RUN rpm-ostree install \
     # Blackbox terminal
     blackbox-terminal \
     # gnome-tweaks
-    gnome-tweaks
+    gnome-tweaks \
+    # 1password
+    1password
 
 # remove toolbox
 RUN rpm-ostree override remove toolbox
