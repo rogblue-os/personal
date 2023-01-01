@@ -68,6 +68,8 @@ RUN	systemctl enable supergfxd && \
     	systemctl enable dconf-update.service && \
     	fc-cache -f /usr/share/fonts/ubuntu && \
     	fc-cache -f /usr/share/fonts/meslo && \
+	rm -f /etc/yum.repos.d/lyessaadi-blackbox.repo && \
+   	rm -f /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo && \
 	sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf && \
    	sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf && \
     	rm -rf /var/lib/unbound && \
