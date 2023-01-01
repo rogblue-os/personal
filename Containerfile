@@ -65,8 +65,10 @@ RUN rpm-ostree override remove toolbox
 # Final housekeeping
 RUN	systemctl enable supergfxd && \
 	systemctl unmask dconf-update.service && \
-    systemctl enable dconf-update.service && \
-    fc-cache -f /usr/share/fonts/ubuntu && \
-    fc-cache -f /usr/share/fonts/meslo && \
-    rm -rf /var/lib/unbound && \
-    ostree container commit
+    	systemctl enable dconf-update.service && \
+    	fc-cache -f /usr/share/fonts/ubuntu && \
+    	fc-cache -f /usr/share/fonts/meslo && \
+	sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf && \
+   	sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf && \
+    	rm -rf /var/lib/unbound && \
+    	ostree container commit
