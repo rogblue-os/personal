@@ -4,9 +4,6 @@ FROM ghcr.io/rogblue-os/base:latest
 COPY etc /etc
 COPY usr /usr
 
-# Install 1password
-#RUN rpm-ostree install 1password
-
 ### Add all needed repos
     # ProtonVPN
     RUN rpm-ostree install https://repo.protonvpn.com/fedora-36-stable/release-packages/protonvpn-stable-release-1.0.1-1.noarch.rpm
@@ -15,16 +12,16 @@ COPY usr /usr
     # Blackbox-terminal repo
     RUN wget https://copr.fedorainfracloud.org/coprs/lyessaadi/blackbox/repo/fedora-37/lyessaadi-blackbox-fedora-37.repo -O /etc/yum.repos.d/lyessaadi-blackbox.repo
     # Add Asus-linux copr repo
-    RUN cd /etc/yum.repos.d/ && curl -LO https://copr.fedorainfracloud.org/coprs/lukenukem/asus-linux/repo/fedora-37/lukenukem-asus-linux-fedora-37.repo
+    RUN wget https://copr.fedorainfracloud.org/coprs/lukenukem/asus-linux/repo/fedora-37/lukenukem-asus-linux-fedora-37.repo -O /etc/yum.repos.d/asus-linux.repo
     # Add Gnome-VRR repo
-    RUN sudo wget https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-$(rpm -E %fedora)/kylegospo-gnome-vrr-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
+    RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-$(rpm -E %fedora)/kylegospo-gnome-vrr-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
     # Add ADW-GTK3 theme copr
-    RUN sudo wget -P /etc/yum.repos.d/ https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-37/nickavem-adw-gtk3-fedora-37.repo
+    RUN sudo wget https://copr.fedorainfracloud.org/coprs/nickavem/adw-gtk3/repo/fedora-37/nickavem-adw-gtk3-fedora-37.repo -O /etc/yum.repos.d/adw-gtk3.repo
 
 # Install apps
 RUN rpm-ostree install \
-	# virt-manager and needed stuff
-	libvirt-daemon-config-network libvirt-daemon-kvm qemu-kvm util-linux-user \
+    # virt-manager and needed stuff
+    libvirt-daemon-config-network libvirt-daemon-kvm qemu-kvm util-linux-user \
     virt-install virt-manager virt-viewer \
     # zsh & neofetch
     zsh neofetch \
@@ -70,6 +67,10 @@ RUN	systemctl enable supergfxd && \
     	fc-cache -f /usr/share/fonts/meslo && \
 	rm -f /etc/yum.repos.d/lyessaadi-blackbox.repo && \
    	rm -f /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo && \
+	rm -f /etc/yum.repos.d/asus-linux.repo && \
+	rm -f /etc/yum.repos.d/code.repo && \
+	rm -f /etc/yum.repos.d/adw-gtk3.repo && \
+	rm -f /etc/yum.repos.d/kernel-vanilla.repo && \
 	sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf && \
    	sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf && \
     	rm -rf /var/lib/unbound && \
