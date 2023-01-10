@@ -66,3 +66,12 @@ name='gnome-terminal'
 
 [org/gnome/settings-daemon/plugins/media-keys]
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+
+[com/raggesilver/BlackBox]
+command-as-login-shell=true
+use-custom-command=true
+custom-shell-command='distrobox enter fedora'
+theme-light='Solarized Light'
+theme-dark='Tango dark'
+style-preference=2
+font='MesloLGS NF 11'
