@@ -56,6 +56,9 @@ RUN rpm-ostree override replace --experimental --from repo=kernel-vanilla-stable
 # Install gnome-vrr patches
 RUN rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:kylegospo:gnome-vrr mutter gnome-control-center gnome-control-center-filesystem
 
+# Install Protonmail Bridge
+RUN rpm-ostree install https://proton.me/download/bridge/protonmail-bridge-2.3.0-1.x86_64.rpm
+
 # remove toolbox
 RUN rpm-ostree override remove toolbox
 
