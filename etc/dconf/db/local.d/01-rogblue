@@ -77,6 +77,9 @@ command-as-login-shell=true
 use-custom-command=true
 custom-shell-command='distrobox enter fedora'
 theme-light='Solarized Light'
-theme-dark='Tango dark'
+theme-dark='Dracula'
 style-preference=2
 font='MesloLGS NF 11'
+window-height=uint32 753
+window-width=uint32 1096
+
