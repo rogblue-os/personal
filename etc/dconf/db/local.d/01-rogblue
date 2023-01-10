@@ -65,7 +65,7 @@ command='gnome-terminal'
 name='gnome-terminal'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
-binding='<Control><Alt>t'
+binding='<Control><Alt>f'
 command='blackbox'
 name='blackbox'
 
