@@ -211,6 +211,16 @@ if [ "$?" != 0 ] ; then
 fi
 echo "98"
 
+echo "# Installing Converter"
+/usr/bin/flatpak install --user --noninteractive flathub io.gitlab.adhami3310.Converter
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Converter Failed"
+        exit 1
+fi
+echo "99"
+
+
 echo "# Installing Celluloid Media Player"
 /usr/bin/flatpak install --user --noninteractive flathub io.github.celluloid_player.Celluloid
 if [ "$?" != 0 ] ; then
