@@ -17,7 +17,7 @@ RUN rpm-ostree override remove firefox firefox-langpacks
     # vscode
     RUN echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=0\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/code.repo
     # Blackbox-terminal repo
-    RUN wget https://copr.fedorainfracloud.org/coprs/lyessaadi/blackbox/repo/fedora-37/lyessaadi-blackbox-fedora-37.repo -O /etc/yum.repos.d/lyessaadi-blackbox.repo
+    #RUN wget https://copr.fedorainfracloud.org/coprs/lyessaadi/blackbox/repo/fedora-37/lyessaadi-blackbox-fedora-37.repo -O /etc/yum.repos.d/lyessaadi-blackbox.repo
     # Add Asus-linux copr repo
     RUN wget https://copr.fedorainfracloud.org/coprs/lukenukem/asus-linux/repo/fedora-37/lukenukem-asus-linux-fedora-37.repo -O /etc/yum.repos.d/asus-linux.repo
     # Add Gnome-VRR repo
@@ -51,7 +51,7 @@ RUN rpm-ostree install \
     # protonvpn stuff
     protonvpn python-pip \
     # Blackbox terminal
-    blackbox-terminal \
+    # blackbox-terminal \
     # gnome-tweaks
     gnome-tweaks
 
