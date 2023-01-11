@@ -47,8 +47,6 @@ RUN rpm-ostree install \
     blackbox-terminal \
     # gnome-tweaks
     gnome-tweaks \
-    # 1Password
-    1password
 
 ### Kernel 6.1
 RUN rpm-ostree cliwrap install-to-root /
