@@ -1,8 +1,15 @@
-FROM ghcr.io/rogblue-os/base:latest
+# Base the image to the default Fedora Silverblue image
+FROM quay.io/fedora-ostree-desktops/silverblue:37
 # See https://pagure.io/releng/issue/11047 for final location
 
 COPY etc /etc
 COPY usr /usr
+COPY rogblue /usr/bin/
+
+RUN rm -f /usr/share/flatpak/fedora-flathub.filter
+
+# Remove the base firefox
+RUN rpm-ostree override remove firefox firefox-langpacks
 
 ### Add all needed repos
     # ProtonVPN
@@ -74,7 +81,10 @@ RUN	systemctl enable supergfxd && \
 	rm -f /etc/yum.repos.d/code.repo && \
 	rm -f /etc/yum.repos.d/adw-gtk3.repo && \
 	rm -f /etc/yum.repos.d/kernel-vanilla.repo && \
+    sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
+    systemctl enable rpm-ostreed-automatic.timer && \
+	systemctl enable flatpak-automatic.timer && \
 	sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf && \
    	sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf && \
-    	rm -rf /var/lib/unbound && \
-    	ostree container commit
+    rm -rf /var/lib/unbound && \
+    ostree container commit

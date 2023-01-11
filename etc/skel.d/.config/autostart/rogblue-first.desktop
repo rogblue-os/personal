@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=rogblue Desktop FirstBoot Setup
+Comment=Sets up rogblue Desktop Correctly On FirstBoot
+Exec=/usr/bin/rogblue
+Icon=org.gnome.Terminal
+Type=Application
+Categories=Utility;System;
+Name[en_US]=startup
